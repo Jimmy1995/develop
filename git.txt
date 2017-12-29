@@ -1,0 +1,92 @@
+﻿一. 安装Git
+去Git官网，下载安装包，一路点next，默认安装。
+
+安装之后，在空白处右键，菜单显示有 Git GUI Here 和 Git Bash Here ，表示Git安装成功。
+
+二. 配置Git
+1.在任意地方，新建文件夹，为防止出错，最好保证该文件夹目录都是英文。
+
+2.打开新建文件夹，空白处右键，菜单中选择 Git Bash here ，弹出命令行，输入命令 git init ，目录下会生成一个新的 .git的文件夹，用于本地代码仓库。
+
+3.配置本地仓库的账号和邮箱
+
+$ git config --global user.name "Your Name"
+$ git config --global user.email "email@example.com"
+4.为了避免每次远程访问需要输密码，将使用ssh登陆。ssh应该与本机信息绑定。查看自己电脑 C:\Users\Administrator 目录下是否有 .ssh 文件夹。如果没有就需要生成。
+
+$ ssh-keygen -t rsa -C "youremail@example.com"
+按 Enter 键一直到结束。
+
+5.ssh只是本地详细，需要在Github中备份，才能被验证。打开自己的Github，在My Profile中，点击Add Public Key，title随意。
+
+6.key中的内容在本机C盘中，C:\Users\Administrator，里面有个.ssh文件夹，用文本文档打开 id_rsa.pub ，将里面的内容全部复制到key中，即可
+
+7.到此配置完毕，我们需要获取Github上项目的地址，每个项目地址不同，一般在Github的Projects中，能找到跟你相关的所有项目，点开一个项目，就能看到项目地址，然后在Git Bash here 中输入：
+
+$ git clone git@github.com:michaelliao/gitskills.git
+git clone 后面是需要克隆的项目地址
+
+8.将远程仓库数据同步到本地，一般是
+
+$ git pull origin master
+即可完成同步。
+
+9.命令git checkout 可以切换分支，方便开发管理。还有很多git命令，可以自己学习。
+
+
+
+
+
+
+
+gitbash的公钥私钥保存在默认地址 C:\Users\Lonema\.ssh
+tortoisegit的私钥.ppk文件保存在tortoisegit安装目录下E:\run_software\TortoiseGit
+均在github的SSHkey中有保存相应的公钥
+
+添加一个新的远程仓库
+git remote add new_reponsitory_name 远程仓库地址(git@github.com:Jimmy1995/git_reponsitory.git) 
+
+git add .   使文件由git版本控制
+
+git commit -m '提交到本地仓库和远程仓库的描述'
+
+git push -u origin master 将最新同步的代码和修改，提交到你的origin仓库
+
+git status 查看仓库的状态
+
+gitk 
+
+
+将源仓库的信息merge到本地分支
+git check branch_name  切换主/分支
+git rebase source_reponsitory_name/branch_name
+
+git branch -a 查看所有的主分支
+
+git remote 查看所有远程仓库名称 默认origin
+
+git branch branch_name 新建分支
+
+git checkout -b bracn_name 新建分支并切换过去
+
+修改分支testing后合并到主干
+git checkout master  首先切换到主干
+git merge testing 合并分支testing
+
+git branch -- list 查看分支，新建了分支并切换成功同时与远程分支建立联系
+
+合并后，testing分支完成使命就可删除了
+
+git branch -d testing //此时之前若已将此分支推送至远程，则远程的分支还会存在
+
+删除远程分支
+git push origin :testing
+
+通过tortoisegit推送该数据到github仓库
+
+公司一个Mis-Portal项目：http://pan.baidu.com/s/1pKVeopt
+整体架构版本比较老，使用的事SSM架构，使用Ant打包发布项目，使用Weblogic应用服务器，Oracle数据库，前端布局使用B-JUI。该项目大量使用存储过程和数据库任务调度
+源码在此分享
+
+
+
