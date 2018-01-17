@@ -42,6 +42,7 @@ public class JavaMail {
 	 */
 	public void setSmtpHost(String hostName) {
 		System.out.println("设置系统属性：mail.smtp.host = " + hostName);
+		System.out.println("设置系统属性：mail.smtp.starttls.enable = true");
 		if (props == null)
 			props = System.getProperties(); // 获得系统属性对象
 			props.put("mail.smtp.host", hostName); // 设置SMTP主机
@@ -216,14 +217,14 @@ public class JavaMail {
 	 *            String
 	 */
 	public boolean sendout(String subject,String mailbody,String sendTo) {
-		setSubject(subject);
-		setBody(mailbody);
-		setTo(sendTo);
-		setFrom(username);
-		setNamePass(username, password);
-		setNeedAuth(true);
+		setSubject(subject);//设置邮件标题
+		setBody(mailbody);//设置邮件主体内容
+		setTo(sendTo);//设置收件人
+		setFrom(username);//设置发件人
+		setNamePass(username, password);//设置邮箱登陆信息（账号和客户端授权码）
+		setNeedAuth(true);//设置smtp身份认证
 		try {
-			mimeMsg.setContent(mp);
+			mimeMsg.setContent(mp);//Multipart对象,邮件内容,标题,附件等内容均添加到其中后再生成MimeMessage对象
 			mimeMsg.saveChanges();
 			System.out.println("正在发送邮件....");
 			Session mailSession = Session.getInstance(props, null);
@@ -265,23 +266,23 @@ public class JavaMail {
 	*/
 	public static void main(String[] args) {
 
-		String mailbody = "用java代码发送的邮件";
-
+		String mailbody = "用java代码发送的邮件带附件";
 		JavaMail themail = new JavaMail("smtp.qq.com");
-		themail.setNeedAuth(true);
+		
+		/*themail.setNeedAuth(true);
 		if (themail.setSubject("标题") == false)
 			return;
 		if (themail.setBody(mailbody) == false)
 			return;
-		if (themail.setTo("17904@qq.com") == false)
+		if (themail.setTo("1187597904@qq.com") == false)
 			return;
-		if (themail.setFrom("538042@qq.com") == false)
+		if (themail.setFrom("393538042@qq.com") == false)
 			return;
-		//if (themail.addFileAffix("c:\\boot.ini") == false)
-		//	return;
-		themail.setNamePass("393532@qq.com", "");//邮箱登录授权码（16位目前）
-
-		if (themail.sendout("test", mailbody, "7904@qq.com") == false)
+		if (themail.addFileAffix("d:\\plan.xls") == false)//添加附件
+			return;*/
+		
+		themail.setNamePass("393538042@qq.com", "aikhaqerhkulbgcb");//TODO:邮箱登录授权码  yhbaoanixesxbhci
+		if (themail.sendout("再次测试测试啦", mailbody, "1187597904@qq.com") == false)
 			return;
 	} 
 }
