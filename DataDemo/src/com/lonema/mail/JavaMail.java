@@ -45,6 +45,7 @@ public class JavaMail {
 		if (props == null)
 			props = System.getProperties(); // 获得系统属性对象
 			props.put("mail.smtp.host", hostName); // 设置SMTP主机
+			props.setProperty("mail.smtp.starttls.enable","true");//开启SSL传输
 	}
 
 	/**
@@ -278,7 +279,7 @@ public class JavaMail {
 			return;
 		//if (themail.addFileAffix("c:\\boot.ini") == false)
 		//	return;
-		themail.setNamePass("393532@qq.com", "");
+		themail.setNamePass("393532@qq.com", "");//邮箱登录授权码（16位目前）
 
 		if (themail.sendout("test", mailbody, "7904@qq.com") == false)
 			return;
