@@ -281,8 +281,8 @@ public class JavaMail {
 		if (themail.addFileAffix("d:\\plan.xls") == false)//添加附件
 			return;*/
 		
-		themail.setNamePass("393538042@qq.com", "aikhaqerhkulbgcb");//TODO:邮箱登录授权码  yhbaoanixesxbhci
-		if (themail.sendout("再次测试测试啦", mailbody, "1187597904@qq.com") == false)
+		themail.setNamePass("393538042@qq.com", "ahbaoanixefxbhcl");//TODO:邮箱登录授权码  yhbaoanixesxbhci
+		if (themail.sendout("222再次测试测试啦", mailbody, "1187597904@qq.com") == false)
 			return;
 	} 
 }
